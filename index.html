@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Registro de Llamadas a Clientes</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Registro de Llamadas a Clientes</h1>
+    <p class="subtitle">App estática (HTML/JS) integrada con webhooks de n8n</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>➕ Nueva llamada</h2>
+      <form id="form-nueva-llamada">
+        <div class="grid">
+          <label>Fecha
+            <input type="date" name="fecha" required />
+          </label>
+          <label>Nombre del cliente
+            <input type="text" name="nombreCliente" required />
+          </label>
+          <label>E‑mail
+            <input type="email" name="emailCliente" required />
+          </label>
+          <label>Teléfono
+            <input type="tel" name="telefono" required />
+          </label>
+          <label>Cant. llamadas
+            <input type="number" name="cantidadLlamadas" min="0" step="1" value="1" required />
+          </label>
+        </div>
+        <button type="submit">Guardar llamada</button>
+        <span id="status-crear" class="status"></span>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>🔎 Filtros de búsqueda</h2>
+      <form id="form-filtros">
+        <div class="grid">
+          <label>Desde fecha
+            <input type="date" name="desdeFecha" />
+          </label>
+          <label>Hasta fecha
+            <input type="date" name="hastaFecha" />
+          </label>
+          <label>Nombre del cliente
+            <input type="text" name="nombreCliente" placeholder="(opcional)" />
+          </label>
+        </div>
+        <button type="submit">Aplicar filtros</button>
+        <span id="status-filtros" class="status"></span>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>📋 Resultados</h2>
+      <div class="table-wrap">
+        <table id="tabla-resultados">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Fecha</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Teléfono</th>
+              <th>Cant. llamadas</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody><!-- rows here --></tbody>
+        </table>
+      </div>
+      <div id="no-result" class="muted">Sin resultados.</div>
+    </section>
+  </main>
+
+  <footer>
+    <small>Hecho para n8n · App 100% estática</small>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
